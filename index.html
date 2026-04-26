@@ -31,7 +31,7 @@
         }
 
         img {
-            width: 200px;
+            width: 150px;
             margin: 10px;
         }
 
@@ -40,10 +40,33 @@
             margin-bottom: 10px;
             padding: 8px;
         }
+
+        /* Featured content styling */
+        .featured-box {
+            border: 2px solid #333;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Dark Mode styling */
+        .dark-mode {
+            background-color: #121212;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- Dark Mode Toggle -->
+    <label style="padding:10px;">
+        <input type="checkbox" id="darkModeToggle">
+        Dark Mode
+    </label>
 
     <!-- Dynamic Welcome Message -->
     <h1 id="welcomeMessage"></h1>
@@ -63,6 +86,29 @@
             I enjoy learning new programming skills and building projects that improve my understanding
             of web development.
         </p>
+
+        <!-- Skills List (Loop Output) -->
+        <h3>Skills</h3>
+        <ul id="skillsList"></ul>
+    </section>
+
+    <!-- Featured Content Section -->
+    <section id="featured">
+        <h2>Featured Content</h2>
+
+        <div id="universityResources" class="featured-box">
+            <h3>University Resources</h3>
+            https://www.ecpi.edu/programs
+                ECPI Program Home Page
+            </a>
+        </div>
+
+        <div id="personalProjects" class="featured-box">
+            <h3>Personal Projects</h3>
+            https://github.com/tappar/project1
+                Project 1
+            </a>
+        </div>
     </section>
 
     <!-- Projects Section -->
@@ -70,15 +116,15 @@
         <h2>Projects</h2>
 
         <a href="https://github.com/tappar/project1" target="_blank">
-            <img src="https://via.placeholder.com/200" alt="Project 1">
+            <img src="https://via.placeholder.com/200" alt="Project 1" class="project">
         </a>
 
         <a href="https://github.com/tappar/project2" target="_blank">
-            <img src="https://via.placeholder.com/200" alt="Project 2">
+            <img src="https://via.placeholder.com/200" alt="Project 2" class="project">
         </a>
 
         <a href="https://github.com/tappar/project3" target="_blank">
-            <img src="https://via.placeholder.com/200" alt="Project 3">
+            <img src="https://via.placeholder.com/200" alt="Project 3" class="project">
         </a>
     </section>
 
@@ -86,17 +132,18 @@
     <section id="contact">
         <h2>Contact Me</h2>
 
-        <form>
-            <input type="text" placeholder="Your Name" required>
+        <form id="contactForm">
+            <input type="text" id="nameInput" placeholder="Your Name" required>
             <input type="email" placeholder="Your Email Address" required>
             <input type="text" placeholder="Subject">
             <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Submit</button>
+            <button type="submit" id="submitBtn">Submit</button>
         </form>
     </section>
 
     <!-- JavaScript -->
     <script>
+        /* Welcome Message */
         let userName = prompt("What is your name?");
         let welcomeMessage = document.getElementById("welcomeMessage");
 
@@ -105,7 +152,47 @@
         } else {
             welcomeMessage.textContent = "Welcome to my portfolio!";
         }
+
+        /* Skills Array and Loop */
+        const skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub"];
+        const skillsList = document.getElementById("skillsList");
+
+        skills.forEach(skill => {
+            const li = document.createElement("li");
+            li.textContent = skill;
+            skillsList.appendChild(li);
+        });
+
+        /* Conditional Logic for Featured Content */
+        const projectItems = document.querySelectorAll(".project");
+        const universityResources = document.getElementById("universityResources");
+        const personalProjects = document.getElementById("personalProjects");
+
+        if (projectItems.length < 3) {
+            universityResources.classList.remove("hidden");
+            personalProjects.classList.remove("hidden");
+        } else {
+            universityResources.classList.add("hidden");
+            personalProjects.classList.remove("hidden");
+        }
+
+        /* Dark Mode Toggle */
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        darkModeToggle.addEventListener("change", () => {
+            document.body.classList.toggle("dark-mode");
+        });
+
+        /* Form Submit Interactivity */
+        const contactForm = document.getElementById("contactForm");
+        const nameInput = document.getElementById("nameInput");
+
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Thank you, " + nameInput.value + ", your message has been sent!");
+        });
     </script>
 
 </body>
+</html>
 </html>
