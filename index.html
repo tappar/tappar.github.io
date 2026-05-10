@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="description" content="Student Portfolio Website">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Student Portfolio Website">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>My Portfolio</title>
 
     <style>
@@ -49,16 +56,13 @@
             margin-top: 10px;
         }
 
-        .hidden {
-            display: none;
-        }
-
         .dark-mode {
             background-color: #121212;
             color: white;
         }
 
         /* Modal Background */
+
         .modal {
             display: flex;
             position: fixed;
@@ -73,6 +77,7 @@
         }
 
         /* Modal Box */
+
         .modal-content {
             background-color: white;
             padding: 20px;
@@ -82,6 +87,7 @@
         }
 
         /* Close Button */
+
         .close-btn {
             margin-top: 15px;
             padding: 10px 15px;
@@ -92,6 +98,7 @@
         }
 
         /* Tooltip */
+
         .tooltip {
             position: relative;
             display: inline-block;
@@ -122,49 +129,80 @@
         }
 
     </style>
+
 </head>
 
 <body>
 
     <!-- Welcome Modal -->
+
     <div id="welcomeModal" class="modal">
+
         <div class="modal-content">
+
             <h2>Welcome!</h2>
-            <p>This page is a work in progress.</p>
-            <button id="closeModalBtn" class="close-btn">
+
+            <p>
+                This page is a work in progress.
+            </p>
+
+            <button id="closeModalBtn"
+                    class="close-btn">
+
                 Close
+
             </button>
+
         </div>
+
     </div>
 
     <!-- Dark Mode Toggle -->
+
     <label style="padding:10px;">
-        <input type="checkbox" id="darkModeToggle">
+
+        <input type="checkbox"
+               id="darkModeToggle">
+
         Dark Mode
+
     </label>
 
     <!-- Welcome Message -->
-    <h1 id="welcomeMessage">Welcome to My Portfolio</h1>
+
+    <h1 id="welcomeMessage">
+        Welcome to My Portfolio
+    </h1>
 
     <!-- Navigation -->
+
     <nav>
+
         <a href="#about">About</a>
+
         <a href="#projects">Projects</a>
+
         <a href="#contact">Contact</a>
+
     </nav>
 
     <!-- About Section -->
+
     <section id="about">
 
         <h2>About Me</h2>
 
         <p>
+
             Hello! My name is Armani.
-            I am a student interested in technology
-            and software development.
-            I enjoy learning new programming skills
-            and building projects that improve my
-            understanding of web development.
+            I am a student interested in
+            technology and software development.
+
+            I enjoy learning new programming
+            skills and building projects that
+            improve my understanding of web
+            development.
+
         </p>
 
         <h3>Skills</h3>
@@ -174,58 +212,55 @@
     </section>
 
     <!-- Featured Content -->
+
     <section id="featured">
 
         <h2>Featured Content</h2>
 
-        <div id="universityResources" class="featured-box">
+        <div id="universityResources"
+             class="featured-box">
 
             <h3>University Resources</h3>
 
-            <a href="https://www.ecpi.edu/programs" target="_blank">
+            <a href="https://www.ecpi.edu/programs"
+               target="_blank">
+
                 ECPI Program Home Page
+
             </a>
 
         </div>
 
-        <div id="personalProjects" class="featured-box">
+        <div id="personalProjects"
+             class="featured-box">
 
             <h3>Personal Projects</h3>
 
-            <a href="https://github.com/tappar/project1" target="_blank">
+            <a href="https://github.com/tappar/project1"
+               target="_blank">
+
                 Project 1
+
             </a>
 
         </div>
 
     </section>
 
-    <!-- Projects Section -->
+    <!-- Updated Projects Section -->
+
     <section id="projects">
 
         <h2>Projects</h2>
 
-        <a href="https://github.com/tappar/project1" target="_blank">
-            <img src="https://via.placeholder.com/200"
-                 alt="Project 1"
-                 class="project">
-        </a>
+        <!-- Dynamic Projects Appear Here -->
 
-        <a href="https://github.com/tappar/project2" target="_blank">
-            <img src="https://via.placeholder.com/200"
-                 alt="Project 2"
-                 class="project">
-        </a>
-
-        <a href="https://github.com/tappar/project3" target="_blank">
-            <img src="https://via.placeholder.com/200"
-                 alt="Project 3"
-                 class="project">
-        </a>
+        <div id="projectContainer"></div>
 
     </section>
 
     <!-- Contact Section -->
+
     <section id="contact">
 
         <h2>Contact Me</h2>
@@ -247,6 +282,7 @@
             <textarea placeholder="Your Message"></textarea>
 
             <!-- Tooltip Submit Button -->
+
             <div class="tooltip">
 
                 <button type="submit">
@@ -254,7 +290,9 @@
                 </button>
 
                 <span class="tooltip-text">
+
                     Click to send your message!
+
                 </span>
 
             </div>
@@ -265,27 +303,33 @@
 
     <script>
 
-        /* Modal Close Function */
+        /* Welcome Modal */
 
-        let modal = document.getElementById("welcomeModal");
+        let modal =
+            document.getElementById("welcomeModal");
 
         let closeModalBtn =
             document.getElementById("closeModalBtn");
 
-        closeModalBtn.addEventListener("click", function () {
+        closeModalBtn.addEventListener(
+            "click",
+            function () {
 
-            modal.style.display = "none";
+                modal.style.display = "none";
 
-        });
+            }
+        );
 
         /* Skills List */
 
         let skills = [
+
             "HTML",
             "CSS",
             "JavaScript",
             "C++",
             "SQL"
+
         ];
 
         let skillsList =
@@ -293,7 +337,8 @@
 
         skills.forEach(function(skill) {
 
-            let li = document.createElement("li");
+            let li =
+                document.createElement("li");
 
             li.textContent = skill;
 
@@ -307,38 +352,52 @@
             document.getElementById("darkModeToggle");
 
         // Check saved preference
-        if (localStorage.getItem("darkMode") === "enabled") {
 
-            document.body.classList.add("dark-mode");
+        if (
+            localStorage.getItem("darkMode")
+            === "enabled"
+        ) {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
 
             darkModeToggle.checked = true;
 
         }
 
         // Toggle dark mode
-        darkModeToggle.addEventListener("change", function () {
 
-            if (darkModeToggle.checked) {
+        darkModeToggle.addEventListener(
+            "change",
+            function () {
 
-                document.body.classList.add("dark-mode");
+                if (darkModeToggle.checked) {
 
-                localStorage.setItem(
-                    "darkMode",
-                    "enabled"
-                );
+                    document.body.classList.add(
+                        "dark-mode"
+                    );
 
-            } else {
+                    localStorage.setItem(
+                        "darkMode",
+                        "enabled"
+                    );
 
-                document.body.classList.remove("dark-mode");
+                } else {
 
-                localStorage.setItem(
-                    "darkMode",
-                    "disabled"
-                );
+                    document.body.classList.remove(
+                        "dark-mode"
+                    );
+
+                    localStorage.setItem(
+                        "darkMode",
+                        "disabled"
+                    );
+
+                }
 
             }
-
-        });
+        );
 
         /* Contact Form Submission */
 
@@ -358,7 +417,149 @@
             }
         );
 
+        /* Project Objects */
+
+        let projects = [
+
+            {
+                title: "Portfolio Website",
+
+                summary:
+                    "A personal portfolio website showcasing my projects and web development skills.",
+
+                image:
+                    "https://via.placeholder.com/200",
+
+                repository:
+                    "https://github.com/tappar/project1"
+            },
+
+            {
+                title: "JavaScript Calculator",
+
+                summary:
+                    "A calculator application created using JavaScript, HTML, and CSS.",
+
+                image:
+                    "https://via.placeholder.com/200",
+
+                repository:
+                    "https://github.com/tappar/project2"
+            },
+
+            {
+                title: "Student Database Project",
+
+                summary:
+                    "A database project using SQL to manage student records and course information.",
+
+                image:
+                    "https://via.placeholder.com/200",
+
+                repository:
+                    "https://github.com/tappar/project3"
+            }
+
+        ];
+
+        /* Session Storage */
+
+        if (
+            !sessionStorage.getItem("projectData")
+        ) {
+
+            sessionStorage.setItem(
+
+                "projectData",
+
+                JSON.stringify(projects)
+
+            );
+
+        }
+
+        let storedProjects =
+
+            JSON.parse(
+
+                sessionStorage.getItem("projectData")
+
+            );
+
+        /* Dynamically Render Projects */
+
+        let projectContainer =
+
+            document.getElementById(
+                "projectContainer"
+            );
+
+        storedProjects.forEach(
+            function(project) {
+
+                let projectCard =
+
+                    document.createElement("div");
+
+                projectCard.classList.add(
+                    "featured-box"
+                );
+
+                let title =
+
+                    document.createElement("h3");
+
+                title.textContent =
+                    project.title;
+
+                let summary =
+
+                    document.createElement("p");
+
+                summary.textContent =
+                    project.summary;
+
+                let image =
+
+                    document.createElement("img");
+
+                image.src = project.image;
+
+                image.alt = project.title;
+
+                let link =
+
+                    document.createElement("a");
+
+                link.href =
+                    project.repository;
+
+                link.target = "_blank";
+
+                link.textContent =
+                    "View Repository";
+
+                projectCard.appendChild(title);
+
+                projectCard.appendChild(summary);
+
+                projectCard.appendChild(image);
+
+                projectCard.appendChild(
+                    document.createElement("br")
+                );
+
+                projectCard.appendChild(link);
+
+                projectContainer.appendChild(
+                    projectCard
+                );
+
+            }
+        );
+
     </script>
 
 </body>
+
 </html>
